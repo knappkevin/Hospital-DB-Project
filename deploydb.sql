@@ -15,13 +15,15 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN;
-SET @@SESSION.SQL_LOG_BIN= 0;
+/*SET @@SESSION.SQL_LOG_BIN= 0*/;
 
 --
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '';
+--
+-- SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '';
+--
 
 --
 -- Table structure for table `Allergy`
@@ -357,7 +359,7 @@ LOCK TABLES `Patient` WRITE;
 INSERT INTO `Patient` VALUES (1,'John','Doe','1990-01-15','M','123 Main St',2147483647,2147483647,'O+','XYZ Insurance'),(2,'Jane','Smith','1985-05-22','F','456 Oak St',2147483647,2147483647,'A-','ABC Insurance'),(3,'Bob','Johnson','1978-11-08','M','789 Pine St',2147483647,2147483647,'B+','DEF Insurance'),(4,'Alice','Williams','1995-03-17','F','101 Elm St',2147483647,2147483647,'AB+','GHI Insurance'),(5,'Michael','Brown','1982-09-30','M','202 Cedar St',2147483647,2147483647,'O-','JKL Insurance'),(6,'Sara','Garcia','1993-07-12','F','303 Maple St',2147483647,2147483647,'A+','MNO Insurance'),(7,'Daniel','Martinez','1989-04-25','M','404 Birch St',2147483647,2147483647,'B-','PQR Insurance'),(8,'Emily','Davis','1998-02-03','F','505 Walnut St',2147483647,2147483647,'AB-','STU Insurance'),(9,'Ryan','Taylor','1976-06-19','M','606 Spruce St',2147483647,2147483647,'O+','VWX Insurance'),(10,'Megan','Clark','1991-12-08','F','707 Pine St',2147483647,2147483647,'A-','YZA Insurance'),(11,'Alex','Miller','1987-08-14','M','808 Oak St',2147483647,2147483647,'A+','ABC Insurance'),(12,'Olivia','Wright','1996-01-25','F','909 Pine St',2147483647,2147483647,'B-','DEF Insurance'),(13,'Ethan','Lee','1980-04-02','M','101 Cedar St',2147483647,2147483647,'AB+','GHI Insurance'),(14,'Sophia','Hill','1999-11-11','F','202 Elm St',2147483647,2147483647,'O-','JKL Insurance'),(15,'Logan','Baker','1984-07-08','M','303 Maple St',2147483647,2147483647,'A+','MNO Insurance'),(16,'Ava','Carter','1997-03-19','F','404 Birch St',2147483647,2147483647,'B-','PQR Insurance'),(17,'Mason','Cooper','1988-09-26','M','505 Walnut St',2147483647,2147483647,'AB-','STU Insurance'),(18,'Emma','Fisher','1994-05-03','F','606 Spruce St',2147483647,2147483647,'O+','VWX Insurance'),(19,'Jackson','Gordon','1979-12-22','M','707 Pine St',2147483647,2147483647,'A-','YZA Insurance'),(20,'Isabella','Hudson','1992-06-05','F','808 Oak St',2147483647,2147483647,'B+','BCD Insurance');
 /*!40000 ALTER TABLE `Patient` ENABLE KEYS */;
 UNLOCK TABLES;
-SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
+/*SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;*/
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
