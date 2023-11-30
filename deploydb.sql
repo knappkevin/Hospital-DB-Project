@@ -371,3 +371,50 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-11-22 12:34:37
+
+CREATE VIEW 'patient_hospital_appointments' AS
+SELECT
+  CONCAT(P.Patient_FName, ' ', P.Patient_LName) AS Patient_Name,
+  CONCAT(E.Employee_FName, ' ', E.Employee_LName) AS Employee_Name,
+  A.Date,
+  A.Time,
+  A.Description
+FROM
+  Appointment A
+  JOIN Patient P ON A.Medical_Record_Number = P.Medical_Record_Number
+  JOIN Employee E ON A.Employee_ID = E.Employee_ID;
+
+
+CREATE VIEW 'patient_invoices' AS
+SELECT
+  Invoice.Invoice_Number,
+  CONCAT(Patient.Patient_FName, ' ', Patient.Patient_LName) AS Patient_Name,
+  Invoice.Description,
+  Invoice.Cost,
+  Invoice.Total
+FROM
+  Patient
+  INNER JOIN Invoice ON Patient.Medical_Record_Number = Invoice.Medical_Record_Number;
+
+
+CREATE VIEW 'patient_medical_information' AS
+SELECT
+  CONCAT(P.Patient_FName, ' ', P.Patient_LName) AS Patient_Name,
+  P.Blood_Type,
+  GROUP_CONCAT(DISTINCT A.Allergy_Name) AS Allergies,
+  GROUP_CONCAT(DISTINCT I.Immunization_Name) AS Immunizations,
+  GROUP_CONCAT(DISTINCT M.Medication_Name) AS Medications,
+  MR.Treatment_History AS Treatment_History,
+  MR.Surgical_History AS Surgical_History,
+  MR.Doctor_Notes AS Doctor_Notes
+FROM
+  Patient P
+  LEFT JOIN Allergy_Record AR ON P.Medical_Record_Number = AR.Medical_Record_Number
+  LEFT JOIN Allergy A ON AR.Allergy_ID = A.Allergy_ID
+  LEFT JOIN Immunization_Record IR ON P.Medical_Record_Number = IR.Medical_Record_Number
+  LEFT JOIN Immunization I ON IR.Immunization_ID = I.Immunization_ID
+  LEFT JOIN Medical_Record MR ON P.Medical_Record_Number = MR.Medical_Record_Number
+  LEFT JOIN Medication_Record MedR ON P.Medical_Record_Number = MedR.Medical_Record_Number
+  LEFT JOIN Medication M ON MedR.Medication_ID = M.Medication_ID
+GROUP BY
+  P.Medical_Record_Number;
